@@ -75,6 +75,9 @@ void updateAndFind_kth(int x,int lx,int rx,int k){
     seg[x].ff=seg[2*x+1].ff+seg[2*x+2].ff;
 }
 
+/*
+    lazy propagation
+*/
 ll get(int x,int lx,int rx,int pos){
     if(lx==rx){
         return seg[x];
@@ -83,6 +86,20 @@ ll get(int x,int lx,int rx,int pos){
     int mid=(lx+rx)/2;
     if(pos<=mid) return get(2*x,lx,mid,pos);
     else return get(2*x+1,mid+1,rx,pos);
+}
+
+void update(int x,int lx,int rx,int l,int r,ll addend){
+    if(l>r) return;
+    if(l==lx && r==rx){
+        seg[x] += addend;
+        lazy[x] += addend;
+        deb(seg[x]);
+        return;
+    }
+    push(x);
+    int mid=(lx+rx)/2;
+    update(2*x,lx,mid,l,min(r,mid),addend);
+    update(2*x+1,mid+1,rx,max(l,mid+1),r,addend);
 }
 
 void solve(){

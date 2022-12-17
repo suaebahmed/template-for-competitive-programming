@@ -44,7 +44,7 @@ ll curr_ans=0;
 ll a[MXN],ans_arr[MXN],freq[MXN];
 
 void add(int idx){
-
+    
 }
 void remove(int idx){
     

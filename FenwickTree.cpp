@@ -23,7 +23,9 @@ typedef long long ll;
 const ll INF=1e18;
 const int MAXN=2*1e5+2;
 const int K=10;
-
+/*
+    ***  One-based indexing approach ***
+*/
 struct FenwickTree1Base
 {
     vector<ll> tree;
@@ -36,6 +38,8 @@ struct FenwickTree1Base
         : FenwickTree1Base(a.size()){
         for(int i=1; i<=a.size(); i++){
             add(i,a[i-1]);
+            //it help to see how add/updated tree
+            // printA(); 
         }
     }
     ll sum(int i){
