@@ -38,12 +38,14 @@ struct disjoint{
         {
             a = Find(a);
             b = Find(b);
+            if(a == b) return;
             if(sz[a] < sz[b]) swap(a,b);
             p[b] = a;
             sz[a] += sz[b];
         }
         ll Size(ll n)
         {
+            n = Find(n);
             return sz[n];
         }
 };

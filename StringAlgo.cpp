@@ -31,6 +31,34 @@ vector<int> prefix_functoin(string &s){
     return pi;
 }
 
+int rabin_karp(string const& s, string const& t) {
+    const int p = 31; 
+    const int m = 1e9 + 9; // 1e18
+    int S = s.size(), T = t.size();
+
+    vector<long long> ppow(max(S, T)); 
+    ppow[0] = 1; 
+    for (int i = 1; i < (int)ppow.size(); i++) ppow[i] = (ppow[i-1] * p) % m;
+
+    vector<long long> h(T + 1, 0); 
+    for (int i = 0; i < T; i++) h[i+1] = (h[i] + (t[i] - 'a' + 1) * ppow[i]) % m; 
+    
+    long long hash = 0; 
+    for (int i = 0; i < S; i++) hash = (hash + (s[i] - 'a' + 1) * ppow[i]) % m; 
+
+    // number of substring such that each character belongs to exactly one substring
+    int occ = 0, j = S;
+    for (int i = 0; i + S - 1 < T; i++) {
+        long long currHash = (h[i+S] + m - h[i]) % m;
+        j++;
+        if (currHash == hash * ppow[i] % m && j>=S && t.substr(i,S)==s){
+            j = 0;
+            occ++;
+        }
+    }
+    return occ;
+}
+
 void solve(){
     
 }

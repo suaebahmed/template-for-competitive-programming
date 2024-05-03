@@ -28,7 +28,7 @@ int level[MXN],vis[MXN];
 const int K = 20;
 int lca[K][MXN];
 int n;
- 
+
 void dfs(int u=1,int d=0,int p=-1){
     vis[u] = 1;
     level[u] = d;
@@ -39,7 +39,7 @@ void dfs(int u=1,int d=0,int p=-1){
         }
     }
 }
- 
+
 void build_lca(){
     for(int i=1; i<=K; i++){
         for(int j=1; j<=n; j++){
@@ -50,7 +50,7 @@ void build_lca(){
         }
     }
 }
- 
+
 int LCA(int a,int b){
     if(level[a]>level[b]) swap(a,b);
     int d = level[b]-level[a];
@@ -68,7 +68,7 @@ int LCA(int a,int b){
     }
     return lca[0][a];
 }
- 
+
 int query(int d,int a){
     while(d>0 && a!=-1){
         int i = log2(d);
@@ -78,7 +78,7 @@ int query(int d,int a){
     }
     return a;
 }
- 
+
 void solve(){
     int q; cin>>n>>q;
     for(int i=2; i<=n; i++){
@@ -94,7 +94,7 @@ void solve(){
         cout<<LCA(a,b)<<"\n";
     }
 }
- 
+
 int main(){
     optimize();
     #ifndef ONLINE_JUDGE
