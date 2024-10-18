@@ -4,7 +4,7 @@
 using namespace __gnu_pbds;
 using namespace std;
 #ifndef ONLINE_JUDGE
-#include<debug.h>
+#include "debug.h"
 #else
 #define dbg(x...)
 #endif
@@ -27,20 +27,16 @@ tree_order_statistics_node_update> ordered_multiset;
 #define int long long 
 #define yes cout<<"YES\n"
 #define no cout<<"NO\n"
-const int N = 3e5+5, inf = 1e9;
+const int N = 1e5 + 5, inf = 1e9;
 const int MOD = 998244353;
 
 void solve(){
-
-} 
+    
+}
 
 int32_t main(){
     ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    #ifndef ONLINE_JUDGE 
-    freopen("input.txt","r",stdin);
-    freopen("output.txt","w",stdout);
-    #endif
+    cin.tie(NULL);    
     int tt=1;
     cin>>tt;
     for(int i=1; i<=tt; i++){

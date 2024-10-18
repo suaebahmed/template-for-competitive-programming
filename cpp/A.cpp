@@ -4,7 +4,7 @@
 using namespace __gnu_pbds;
 using namespace std;
 #ifndef ONLINE_JUDGE
-#include<debug.h>
+#include "debug.h"
 #else
 #define dbg(x...)
 #endif
@@ -31,73 +31,12 @@ const int N = 1e5 + 5, inf = 1e9;
 const int MOD = 998244353;
 
 void solve(){
-    int N; cin>>N;
-    string ss; cin>>ss;
-    int s = 0, n = 0;
-    int e = 0, w = 0;
-    for(auto c: ss){
-        if(c == 'S') s++;
-        else if(c == 'N') n++;
-        else if(c == 'W') w++;
-        else e++;
-    }
-    if((n%2==1 && s%2==0) || (n%2==0 && s%2==1)){
-        cout<<"NO\n";
-        return;
-    }
-    if((e%2==1 && w%2==0) || (e%2==0 && w%2==1)){
-        cout<<"NO\n";
-        return;
-    }
-
-    string ans(N,'#');
-    for(int i=0; i<N; i++){
-        if(n&1){
-            ans[i] = 'R';
-            n--;
-        }
-        if(s&1){
-            ans[i] = 'R';
-            s--;
-        }
-
-        if(e&1){
-            ans[i] = 'R';
-            e--;
-        }
-        if(w&1){
-            ans[i] = 'R';
-            w--;
-        }
-    }
-    int Re = 0, Rw = 0, H
-
-
-    int R2 = 0, H2 =  0;
-    for(int i=0; i<N; i++){
-        if(ss[i] == 'E' || ss[i] == 'W'){
-            if(R > H) ans[i] = 'H', H++;
-            else ans[i] = 'R', R++;
-        }
-        else{
-            if(R2 > H2) ans[i] = 'H', H2++;
-            else ans[i] = 'R', R2++;
-        }
-    }
-    if(R != H || R2 != H2){
-        cout<<"NO\n";
-        return;
-    }
-    cout<<ans<<endl;
+    
 }
 
 int32_t main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);    
-    #ifndef ONLINE_JUDGE 
-    freopen("input.txt","r",stdin);
-    freopen("output.txt","w",stdout);
-    #endif
     int tt=1;
     cin>>tt;
     for(int i=1; i<=tt; i++){
