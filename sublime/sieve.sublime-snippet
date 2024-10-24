@@ -1,0 +1,35 @@
+<snippet>
+	<content><![CDATA[
+const int _N = 1e6+1;
+vector<int> prime;
+int spf[_N];
+
+void SIEVE(){
+    spf[1] = 1;
+    for(int i=2; i<_N; i++) spf[i] = i;
+
+    prime.pb(2);
+    for(int i=4; i<_N; i+=2) spf[i] = 2;
+    for(int i=3; i<_N; i+=2){
+        if(spf[i]==i){
+            prime.pb(i);
+            for(int j=i*i; j<_N; j+=i){
+                if(spf[j]==j) spf[j] = i;
+            }
+        }
+    }
+}
+vector<int> getFactorize(int n){
+    vector<int> ans;
+    while(n != 1){
+        ans.pb(spf[n]);
+        n /= spf[n];
+    }
+    return ans;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>sieve</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>
