@@ -35,21 +35,6 @@ const int MXN = 1e5;
 bitset<MXN> isPrime;
 int phi[MXN+5];
 
-void SIEVE(){
-    isPrime[1] = 0;
-    for(int i=2; i<MXN; i++) isPrime[i] = 1;
-
-    for(int i=4; i<MXN; i+=2) isPrime[i] = 0;
-    for(int i=3; i<MXN; i+=2){
-        if(isPrime[i]){
-            // j = i*i;
-            for(int j=2*i; j<MXN; j+=i){
-                isPrime[j] = 0;
-            }
-        }
-    }
-}
-
 void phi_1_to_n(){
     for(int i=0; i<MXN; i++) phi[i] = i;
     for(int i=2; i<MXN; i++){
@@ -61,8 +46,17 @@ void phi_1_to_n(){
     }
 }
 
+// ** prime factorization using seive Ai = 1e6 / 1e7
+int PRIME_RANGE = 31622 + 5; // = sqrt(1e9)
+// ** prime factorization using seive Ai = 1e9
+
+// ** check prime or not using seive Ai = 1e9
+// ** find eular phi value using seive Ai = 1e9
+// optimized sieve
+bool marked[PRIME_RANGE];
+
 const int N = 1e6+1;
-vector<int> PRIME;
+vector<int> prime;
 int spf[N];
 
 void SIEVE(){
@@ -72,7 +66,7 @@ void SIEVE(){
     for(int i=4; i<N; i+=2) spf[i] = 2;
     for(int i=3; i<N; i+=2){
         if(spf[i]==i){
-            PRIME.pb(i);
+            prime.pb(i);
             for(int j=i*i; j<N; j+=i){
                 if(spf[j]==j) spf[j] = i;
             }
@@ -88,26 +82,6 @@ vector<int> getFactorize(int n){
     return ans;
 }
 
-// ** prime factorization using seive Ai = 1e6 / 1e7
-int PRIME_RANGE = 31622 + 5; // = sqrt(1e9)
-// ** prime factorization using seive Ai = 1e9
-
-// ** check prime or not using seive Ai = 1e9
-// ** find eular phi value using seive Ai = 1e9
-// optimized sieve
-vector<int> prime;
-bool marked[PRIME_RANGE];
-
-void SIEVE(){
-    marked[1] = true;
-    for(int i=2; i<PRIME_RANGE; i++){
-        if(!marked[i]){
-            prime.push_back(i);
-            for(int j=2*i; j<PRIME_RANGE; j+=i)
-                marked[j] = true;
-        }
-    }
-}
 bool fun_isPrime(int n){
     if(n == 0 || n==1) return 0;
     for(int i=0; i<prime.size() && prime[i]*prime[i]<=n; i++){
@@ -118,14 +92,14 @@ bool fun_isPrime(int n){
 
 int divSum(int n){
     int sum = 1;
-    for(int i=0; i<PRIME.size() && PRIME[i]*PRIME[i]<=n; i++){
-        if(n%PRIME[i]==0){
-            int a = PRIME[i];
-            while(n%PRIME[i]==0){
-                a = a*PRIME[i];
-                n/=PRIME[i];
+    for(int i=0; i<prime.size() && prime[i]*prime[i]<=n; i++){
+        if(n%prime[i]==0){
+            int a = prime[i];
+            while(n%prime[i]==0){
+                a = a*prime[i];
+                n/=prime[i];
             }
-            sum = sum*((a-1)/(PRIME[i]-1));
+            sum = sum*((a-1)/(prime[i]-1));
         }
     }
     if(n > 1){
