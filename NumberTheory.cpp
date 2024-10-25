@@ -32,7 +32,6 @@ int modInverse(ll n,int md){
 }
 
 const int MXN = 1e5;
-bitset<MXN> isPrime;
 int phi[MXN+5];
 
 void phi_1_to_n(){
@@ -53,8 +52,6 @@ int PRIME_RANGE = 31622 + 5; // = sqrt(1e9)
 // ** check prime or not using seive Ai = 1e9
 // ** find eular phi value using seive Ai = 1e9
 // optimized sieve
-bool marked[PRIME_RANGE];
-
 const int N = 1e6+1;
 vector<int> prime;
 int spf[N];
@@ -73,6 +70,28 @@ void SIEVE(){
         }
     }
 }
+
+bitset<_N> isPrime;
+bool marked[PRIME_RANGE];
+// Sometime we need this type of sieve for time and space optimization!
+
+void SIEVE(){
+    isPrime[1] = 0;
+    for(int i=2; i<_N; i++) isPrime[i] = 1;
+
+    prime.pb(2);
+    for(int i=4; i<_N; i+=2) isPrime[i] = 0;
+
+    for(int i=3; i<_N; i+=2){
+        if(isPrime[i]==1){
+            prime.pb(i);
+            for(int j=i*i; j<_N; j+=i){
+                isPrime[j] = 0;
+            }
+        }
+    }
+}
+
 vector<int> getFactorize(int n){
     vector<int> ans;
     while(n != 1){
@@ -103,7 +122,9 @@ int divSum(int n){
                 a = a*prime[i];
                 n/=prime[i];
             }
-            sum = sum*((a-1)/(prime[i]-1));
+            sum = sum*((a-1)/(prime[i]-1)); 
+            //  geometric progression = 1 + p + p^2 + p^3 + p^4 ... p^q
+            //  (p^(q + 1) - 1)/(p-1)
         }
     }
     if(n > 1){
