@@ -76,8 +76,12 @@ void SIEVE(){
 vector<int> getFactorize(int n){
     vector<int> ans;
     while(n != 1){
-        ans.pb(spf[n]);
-        n /= spf[n];
+        int d = spf[n], c = 0;
+        while(n % d == 0){
+            n /= d;
+            c++;
+            ans.push_back(d);
+        }
     }
     return ans;
 }
