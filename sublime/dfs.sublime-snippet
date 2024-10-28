@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[
+const int NN = 3e5 + 5;
+vector<int> G[NN],vis(NN);
+
+void dfs(int u){
+    vis[u] = 1;
+    for(auto v: G[u]){
+        if(vis[v] == 0){
+            dfs(v);
+        }
+    }
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>dfs</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>
