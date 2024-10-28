@@ -16,9 +16,9 @@ int extd_gcd(int a,int b,int *x,int *y)
     return d;
 }
 
-ll fastexpo(ll a,ll b,int md)
+int fastexpo(int a,int b,int md)
 {
-    ll res=1;
+    int res=1;
     while(b)
     {
         if(b&1) res = (res*a)%md;
@@ -27,7 +27,7 @@ ll fastexpo(ll a,ll b,int md)
     }
     return res;
 }
-int modInverse(ll n,int md){
+int modInverse(int n,int md){
     return fastexpo(n,md-2,md);
 }
 
