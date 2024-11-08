@@ -54,6 +54,7 @@ int rabin_karp(string const& s, string const& t) {
     for (int i = 0; i + S - 1 < T; i++) {
         long long currHash = (h[i+S] + m - h[i]) % m;
         j++;
+        // why are we multiplying with ppow[i]? 
         if (currHash == hash * ppow[i] % m && j>=S && t.substr(i,S)==s){
             j = 0;
             occ++;
@@ -63,6 +64,9 @@ int rabin_karp(string const& s, string const& t) {
 }
 
 // https://codeforces.com/contest/514/problem/C
+// It can be solved also double hashing approch
+// Using Double Hashing: https://codeforces.com/contest/514/submission/290288349
+
 const int p = 257;
 #define M 1000000000007 // 1e12 + 7
 int getHashValue(string s){
@@ -77,8 +81,6 @@ void solve(){
     ppow[0] = 1; 
     for (int i = 1; i < (int)ppow.size(); i++) 
         ppow[i] = (ppow[i-1] * p) % M;
-
-    
 }
 
 int32_t main(){
