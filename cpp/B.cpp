@@ -22,7 +22,8 @@ int dy[]={+1,0,-1,0};
 #define vi vector<int>
 typedef tree<int, null_type, less_equal<int>,rb_tree_tag,
 tree_order_statistics_node_update> ordered_multiset;
-#define scanv(a) for(auto &x: a) cin>>x;
+//p.order_of_key(value) as like lower_bound but return index 
+#define cinv(a) for(auto &x: a) cin>>x;
 #define ll long long
 #define int long long 
 #define yes cout<<"YES\n"
@@ -36,12 +37,13 @@ void solve(){
 
 int32_t main(){
     ios_base::sync_with_stdio(false);
-    cin.tie(NULL);    
+    cin.tie(NULL);
     int tt=1;
     cin>>tt;
     for(int i=1; i<=tt; i++){
-        // cout<<"Case "<<i<<":\n";
+        // cout<<"Case "<<i<<": ";
         solve();
+
     }
     return 0;
 }

@@ -56,6 +56,9 @@ void dfs(int u, int p){
     ans[u] = sz(sack[u].st);
 }
 
+// Distinct Colors
+// https://cses.fi/problemset/task/1139
+
 int main(){
     ios_base::sync_with_stdio(0);cout.tie(nullptr);cin.tie(nullptr);
     int n; cin>>n;

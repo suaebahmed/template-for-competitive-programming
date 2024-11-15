@@ -4,8 +4,8 @@ using namespace std;
 #define PI acos(-1)
 const int MX = 1e5+5;
 
-ll fastExpo(ll a,ll N,ll md){
-    ll res=1;
+int fastExpo(int a,int N,int md){
+    int res=1;
     while(N>0){
         if(N&1) res=(res*a)%md;
         a=(a*a)%md;
@@ -14,20 +14,20 @@ ll fastExpo(ll a,ll N,ll md){
     return res;
 }
 
-int modInverse(ll n,int md){
+int modInverse(int n,int md){
     return fastExpo(n,md-2,md);
 }
 
-int nCrModPfermat(ll n,int r,int md){
+int nCrModPfermat(int n,int r,int md){
     if(n<r) return 0;
     if(r==0) return 1;
-    ll *fact=new ll[n+1];
+    int *fact=new int[n+1];
     fact[0]=1;
-    for(ll i=1; i<=n; i++){
+    for(int i=1; i<=n; i++){
         fact[i]=(fact[i-1]*i)%md;
     }
-    ll a=fact[n];
-    ll b=(fact[r]%md*fact[n-r]%md)%md;
+    int a=fact[n];
+    int b=(fact[r]%md*fact[n-r]%md)%md;
     return (a%md*modInverse(b,md)%md)%md;
 }
 
@@ -38,11 +38,11 @@ int nCrModPfermat(ll n,int r,int md){
 */
 
 void solve(){
-	ll n,k; cin>>n>>k;
-    vector<ll> a(n);
+	int n,k; cin>>n>>k;
+    vector<int> a(n);
     read(a);
-    sort(rall(a));
-    map<ll,ll> c1,c2;
+    sort(all(a));
+    map<int,int> c1,c2;
     for(int i=0; i<k; i++) ++c1[a[i]];
     for(int i=0; i<n; i++) ++c2[a[i]];
 
