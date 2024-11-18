@@ -22,19 +22,44 @@ using namespace std;
 #define yes cout<<"YES\n"
 #define no cout<<"NO\n"
 const int N = 2e5 + 5, inf = 1e9;
+// https://codeforces.com/contest/2037/submission/292125237
 
-bool query(){
-    cout<<"NO"<<endl;
-    return 0;
+int query(int l, int r){
+    cout<<"? "<<l<<" "<<r<<endl;
+    int a; cin>>a;
+    return a;
 }
 
-void answer(int x){
+void answer(string x){
     cout<<"! "<<x<<endl;
-    exit(0);
 }
 
 void solve(){
-    
+    int n; cin>>n;
+    for(int i=2; i<=n; i++){
+        int res = query(1, i);
+        if(res > 0){
+            string s;
+            for(int j = 0; j+res+1 < i; j++) s.push_back('1');
+            for(int j = 0; j<res; j++) s.push_back('0');
+            s.push_back('1');
+
+            // cout<<"debug #"<<s<<" "<<i<<" "<<res<<endl;
+
+            vector<int> a = {res};
+            for(int j=i+1; j<=n; j++){
+                int rs = query(1, j);
+                if(rs > a.back()){
+                    s.push_back('1');
+                    a.push_back(rs);
+                }
+                else s.push_back('0');
+            }
+            answer(s);
+            return;
+        }
+    }
+    answer("IMPOSSIBLE");
 }
 
 int32_t main(){
