@@ -40,6 +40,18 @@ bool cmp(Query x,Query other)
     return (x.l/BLOCK_SIZE) < (other.l/BLOCK_SIZE);
 }
 
+/*
+2 5
+2 3
+3 2
+3 3
+4 5
+*/
+bool cmp(const pair<int, int>& p1, const pair<int, int>& p2){
+    if(p1.ff == p2.ff) return p1.ss > p2.ss;
+    return p1.ff < p2.ss;
+}
+
 ll curr_ans=0;
 ll a[MXN],ans_arr[MXN],freq[MXN];
 

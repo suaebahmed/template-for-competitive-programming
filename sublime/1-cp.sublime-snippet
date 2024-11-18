@@ -13,14 +13,14 @@ using namespace std;
 #define rall(v) (v).rbegin(),(v).rend()
 #define srt(v) sort(all(v))
 #define rsrt(v) sort(rall(v))
-#define lwb(x) lower_bound(all(v),x)
+#define lowb(a, x) lower_bound(all(a),x)
 #define sz(v) (int)v.size()
 #define ff first
 #define ss second
 #define pii pair<int,int>
 #define mod 1000000007
 #define vi vector<int>
-#define cinv(a) for(auto &x: a) cin>>x;
+#define cinv(a) for(auto &x: a) cin>>x
 #define yes cout<<"YES\n"
 #define no cout<<"NO\n"
 const int N = 2e5 + 5, inf = 1e9;
