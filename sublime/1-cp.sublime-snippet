@@ -36,7 +36,6 @@ int32_t main(){
     for(int i=1; i<=tc; i++){
         // cout<<"Case "<<i<<": ";
         solve();
-
     }
     return 0;
 }

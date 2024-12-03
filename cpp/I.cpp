@@ -46,12 +46,12 @@ void solve(){
 
             // cout<<"debug #"<<s<<" "<<i<<" "<<res<<endl;
 
-            vector<int> a = {res};
+            int last = rs;
             for(int j=i+1; j<=n; j++){
                 int rs = query(1, j);
-                if(rs > a.back()){
+                if(rs > last){
                     s.push_back('1');
-                    a.push_back(rs);
+                    last = rs;
                 }
                 else s.push_back('0');
             }
