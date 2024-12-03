@@ -1,49 +1,39 @@
-#include<ext/pb_ds/assoc_container.hpp>
-#include<ext/pb_ds/tree_policy.hpp>
 #include<bits/stdc++.h>
-using namespace __gnu_pbds;
 using namespace std;
-#ifndef ONLINE_JUDGE
+#ifdef LOCAL
 #include "debug.h"
 #else
 #define dbg(x...)
 #endif
+#define int long long
 #define pb push_back
 #define all(v) (v).begin(),(v).end()
 #define rall(v) (v).rbegin(),(v).rend()
 #define srt(v) sort(all(v))
 #define rsrt(v) sort(rall(v))
+#define lowb(a, x) lower_bound(all(a),x)
+#define sz(v) (int)v.size()
 #define ff first
 #define ss second
 #define pii pair<int,int>
 #define mod 1000000007
-int dx[]={0,+1,0,-1};
-int dy[]={+1,0,-1,0};
 #define vi vector<int>
-typedef tree<int, null_type, less_equal<int>,rb_tree_tag,
-tree_order_statistics_node_update> ordered_multiset;
-//p.order_of_key(value) as like lower_bound but return index 
-#define cinv(a) for(auto &x: a) cin>>x;
-#define ll long long
-#define int long long 
+#define cinv(a) for(auto &x: a) cin>>x
 #define yes cout<<"YES\n"
 #define no cout<<"NO\n"
-const int N = 1e5 + 5, inf = 1e9;
-const int MOD = 998244353;
+const int N = 2e5 + 5, inf = 1e9;
 
 void solve(){
     
 }
 
 int32_t main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    int tt=1;
-    cin>>tt;
-    for(int i=1; i<=tt; i++){
+    ios_base::sync_with_stdio(false), cin.tie(NULL);
+    int tc=1;
+    cin>>tc;
+    for(int i=1; i<=tc; i++){
         // cout<<"Case "<<i<<": ";
         solve();
-
     }
     return 0;
 }
