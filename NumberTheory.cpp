@@ -134,6 +134,30 @@ int divSum(int n){
 }
 long long lcm(long long a,long long b){ return ((a*b)/__gcd(a,b))};
 
+vector<bool> segmentedSieve(int L, int R) {
+    int lim = sqrt(R);
+
+    vector<bool> mark(lim + 1, false);
+    vector<int> primes;
+    for (int i = 2; i <= lim; ++i) {
+        if (!mark[i]) {
+            primes.emplace_back(i);
+            for (int j = i * i; j <= lim; j += i)
+                mark[j] = true;
+        }
+    }
+    vector<bool> isPrime(R - L + 1, true);
+    for (int i : primes){
+        // ((L + i - 1) / i) ceil value (L/i). Example L = 11, i = 2 so, intial j = 12
+        for (int j = max(i * i, ((L + i - 1) / i) * i); j <= R; j += i){
+            isPrime[j - L] = false;
+        }
+    }
+
+    if (L == 1) isPrime[0] = false;
+    return isPrime;
+}
+
 void solve(){
     
 }
