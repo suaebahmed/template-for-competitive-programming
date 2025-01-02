@@ -11,7 +11,13 @@ void __print(char x) {cerr << '\'' << x << '\'';}
 void __print(const char *x) {cerr << '\"' << x << '\"';}
 void __print(const string &x) {cerr << '\"' << x << '\"';}
 void __print(bool x) {cerr << (x ? "true" : "false");}
-
+void __print(const std::vector<bool> &x) {
+    cerr << '{';
+    for (size_t i = 0; i < x.size(); ++i) {
+        cerr << (i ? ", " : "") << (x[i] ? "true" : "false");
+    }
+    cerr << '}';
+}
 template<typename T, typename V>
 void __print(const pair<T, V> &x) {cerr << '{'; __print(x.first); cerr << ','; __print(x.second); cerr << '}';}
 template<typename T>
